@@ -1,4 +1,4 @@
-name: Check Linux Packages
+name: Run java -version
 on:
   push:
     branches: [ master ]
