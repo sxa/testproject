@@ -5,13 +5,9 @@ on:
     paths:
       - '.github/**'
 
-concurrency:
-  group: "${{ github.ref }}"
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
 jobs:
   testaction:
-    name: "Check ca-certificates"
+    name: "Run a few things ..."
     runs-on: ubuntu-latest
     defaults:
       run:
