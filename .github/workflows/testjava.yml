@@ -3,12 +3,8 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'linux/**'
-      - '.github/workflows/linux.yml'
-#  schedule:
-#    # * is a special character in YAML so you have to quote this string
-#    - cron:  '30 5,17 * * *'
-# Cancel existing runs if user makes another push.
+      - '.github/**'
+
 concurrency:
   group: "${{ github.ref }}"
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
