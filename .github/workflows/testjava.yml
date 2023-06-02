@@ -1,0 +1,46 @@
+name: Check Linux Packages
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'linux/**'
+      - '.github/workflows/linux.yml'
+#  schedule:
+#    # * is a special character in YAML so you have to quote this string
+#    - cron:  '30 5,17 * * *'
+# Cancel existing runs if user makes another push.
+concurrency:
+  group: "${{ github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  testaction:
+    name: "Check ca-certificates"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          java-package: jdk
+          architecture: x64
+          distribution: 'temurin'
+
+
+      - name: pwd
+        run: |
+          pwd
+
+      - name: Run which javac
+        run: |
+          javac -version
+
+      - name: Run java version
+        run: |
+          java -version
