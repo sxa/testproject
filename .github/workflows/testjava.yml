@@ -21,21 +21,21 @@ jobs:
         run: |
           pwd
 
-      - name: Download latest JDK21
-        run: |
-          curl -L -o jdk.tar.gz https://api.adoptium.net/v3/binary/version/jdk-21+22-ea-beta/linux/x64/jdk/hotspot/normal/eclipse
+#      - name: Download latest JDK21
+#        run: |
+#          curl -L -o jdk.tar.gz https://api.adoptium.net/v3/binary/version/jdk-21+22-ea-beta/linux/x64/jdk/hotspot/normal/eclipse
 
-      - name: list
-        run: |
-          ls -ld $PWD/*
+#      - name: list
+#        run: |
+#          ls -ld $PWD/*
 
       - uses: actions/setup-java@v3
         with:
-          jdkFile: jdk.tar.gz
-          java-version: '21'
-          java-package: jdk
-          architecture: x64
-          distribution: 'jdkfile'
+#          jdkFile: jdk.tar.gz
+          java-version: 21-ea
+#          java-package: jdk
+#          architecture: x64
+          distribution: temurin
 
       - name: Run which javac
         run: |
